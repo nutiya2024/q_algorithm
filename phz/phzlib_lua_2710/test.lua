@@ -6,7 +6,8 @@ function test_hu()
 	-- 吃、碰、偎、跑、提的牌
 	-- 结构 {t = "左吃、中吃、右吃、大大小绞，大小小绞、碰、偎、跑、提",c="中心牌"}
 	local groups = {
-		{t = "wei",card = 9} -- 偎九
+		-- {t = "wei",cards = {9,9,9}}, -- 偎九
+		{t = "chi",cards = {1,2,3}} -- 偎九
 	}
 
 	--  手牌
@@ -14,7 +15,7 @@ function test_hu()
 	local cards = {
 		--0,0,0,0,0,1,1,1,0,0,
 		--1,2,1,0,0,0,1,0,2,1,
-		1,1,1,0,0,1,1,2,0,0,
+		1,1,1,0,0,1,1,2,2,0,
 		1,2,1,0,0,0,1,2,0,1
 	}
 
@@ -22,16 +23,16 @@ function test_hu()
 	local begin = os.clock()
 	
 	-- 判断自已摸的牌是否能胡
-	local self_huxi
+	local self_huxi,g
 	local other_huxi
-	for i = 1,1000 do
-		self_huxi = hulib.get_huxi_self(cards,groups,9)
-		other_huxi = hulib.get_huxi_other(cards,groups,9)
-	end
+	-- for i = 1,1 do
+		self_huxi,g = hulib.get_huxi_self(cards,groups,9)
+		-- other_huxi = hulib.get_huxi_other(cards,groups,9)
+	-- end
 
 	print("time",os.clock()-begin,"seconds")
-	print("self huxi:",self_huxi)
-	print("other huxi:",other_huxi)
+	print("self huxi:",self_huxi,utils.print(g))
+	-- print("other huxi:",other_huxi)
 end
 
 -- 测试获取听的牌
@@ -57,4 +58,4 @@ function test_ting()
 end
 
 test_hu()
-test_ting()
+-- test_ting()

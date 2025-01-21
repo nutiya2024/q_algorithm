@@ -12,7 +12,7 @@ local phz = require "phz"
 local M = {}
 
 M.OP_TYPE = {
-	HU  = 0x0001
+	HU  = 0x0001,
 	TI  = 0x0002,
 	PAO = 0x0004,
 	WEI = 0x0008,
